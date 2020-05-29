@@ -10,7 +10,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { NologinGuard } from './guards/nologin.guard';
 import { AuthGuard } from './guards/auth.guard';
-import { NavbarComponent } from 'documentacion/argon-design-system-angular-master/src/app/shared/navbar/navbar.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent, canActivate:[AuthGuard] },
