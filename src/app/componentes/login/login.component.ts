@@ -35,10 +35,12 @@ export class LoginComponent implements OnInit {
   validation_messages = {
     'mail': [
       { type: 'required', message: 'Debe ingresar un email.' },
-      { type: 'email', message: 'Debe ingresar un email válido.' }
+      { type: 'email', message: 'Debe ingresar un email válido.' },
+      //{ type: 'exist', message: 'Usuario no encontrado.' }
     ],
     'password': [
-      { type: 'required', message: 'Debe ingresar una contraseña.' }
+      { type: 'required', message: 'Debe ingresar una contraseña.' },
+      //{ type: 'valid', message: 'Clave incorrecta.' }
     ]
   };
   modalText: any;
@@ -81,18 +83,20 @@ export class LoginComponent implements OnInit {
         let data = { email: this.userbtn,fec}
         this.loguear(data);
         localStorage.setItem("email", this.userbtn);
-        this.router.navigate(['/Juegos']);
+        this.router.navigate(['/home']);
       })
       .catch(error => {
-        (<HTMLButtonElement>document.getElementById('btnModal')).click();
+        //(<HTMLButtonElement>document.getElementById('btnModal')).click();
         if (error.code === 'auth/user-not-found') {
-          this.modalText = "Usuario no encontrado!";
+          console.log(error.code)
           //this.toastService.error('Usuario no encontrado.');
         } else if (error.code === 'auth/wrong-password') {
-          this.modalText = "Contraseña incorrecta.";
+           console.log(error.code)
+          //this.modalText = "Contraseña incorrecta.";
           //this.toastService.error('Contraseña incorrecta.');
         } else {
-          this.modalText = "Ocurrió un error con el servidor";
+          console.log(error.code)
+          //this.modalText = "Ocurrió un error con el servidor";
         }
       });
   }

@@ -1,0 +1,51 @@
+<main>
+
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 bg-gradient-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+       
+      </div>
+      <div class="container pt-lg-md">
+        
+        <div class="row justify-content-center">
+          
+          <div class="col-lg-5">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-header bg-white pb-5">
+               
+                <form [formGroup]="form" (ngSubmit)="OnSubmitRegister()">
+                  <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                      </div>
+                      
+                      <select class="form-control" formControlName="especialidad" [(ngModel)]="opcionSeleccionada" (change)="capturar()" (focus)="focus1=true" (blur)="focus1=false">
+                        <option value="0">Selecciona una opción</option>
+                        <option *ngFor="let cola of colas">
+                          {{cola}}
+                        </option>
+                    </select>
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="text-center">
+                    <button type="button" class="btn btn-primary my-4" type="submit" [disabled]="!form.valid">Crear Usuario</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

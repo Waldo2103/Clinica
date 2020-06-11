@@ -1,0 +1,313 @@
+<main>
+
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 bg-gradient-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+       
+      </div>
+      <div class="container pt-lg-md">
+        
+        <div class="row justify-content-center">
+          
+          <div class="col-lg-5">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-header bg-white pb-5">
+               
+                <form [formGroup]="form"> <!--(ngSubmit)="OnSubmitRegister()"-->
+                  <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="mail" placeholder="Correo" type="email" (focus)="focus1=true" (blur)="focus1=false">
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'focused':focus2===true}">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="password" placeholder="Clave" type="password" (focus)="focus2=true" (blur)="focus2=false">
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'focused':focus3===true}">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="password2" placeholder="Confirmar Clave" type="password" (focus)="focus3=true" (blur)="focus3=false">
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'focused':focus4===true}">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="nombre" placeholder="Nombre" type="text" (focus)="focus4=true" (blur)="focus4=false">
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'focused':focus5===true}">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="apellido" placeholder="Apellido" type="text" (focus)="focus5=true" (blur)="focus5=false">
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'focused':focus6===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="dni" placeholder="DNI" type="number" (focus)="focus6=true" (blur)="focus6=false">
+                    </div>
+                  </div>
+                  <!--div class="form-group" [ngClass]="{'focused':focus7===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-image"></i></span>
+                      </div>
+                      <input class="form-control btn btn-secondary" formControlName="foto" (change)="cambioArchivo($event)" type="file" (focus)="focus7=true" (blur)="focus7=false">
+                      <button class="form-control btn btn-primary" (click)="subirArchivo()" disabled id="subirOK">Subir</button>
+                    </div>
+                    
+                  </div-->
+                  <!--form [formGroup]="especialidadesForm" type="submit" (change)="submitForm()" novalidate-->
+                    <label><strong> Especialidades</strong></label>
+                    <div *ngFor="let data of especialidadesT; let i=index">
+                        <label>
+                          <input type="checkbox" [id]="data.idEspecialidad" [value]="data.nombre" (change)="onCheckboxChange($event)" />
+                          {{data.nombre}}
+                        </label>
+                      </div>
+                    <!--input type="submit" value="Submit"-->
+                <!--/form-->
+                <form [formGroup]="horariosForm" (ngSubmit)="cargaHorarios()">
+                <br>
+                    <label><strong> Horarios</strong></label>
+                    <div class="row">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input " formControlName="lunes" [(ngModel)]="lunesOK">
+                              <span class="form-check-sign">                    
+                              </span><strong> Lunes</strong> </label>
+                              <div class="hora" *ngIf="lunesOK">
+                                <div class="row">
+                                    <div class="col-6">
+                                      <div class="form-check">
+                                        <label class="form-check-label">
+                                          <input type="checkbox" class="form-check-input " id="lu8" (change)="checkValue($event)">
+                                          <span class="form-check-sign">                    
+                                          </span> 8:00 a 13:30 </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-check">
+                                          <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input " id="lu13" (change)="checkValue($event)">
+                                            <span class="form-check-sign">                    
+                                            </span> 13:30 a 19:00 </label>
+                                            
+                                          </div>
+                                      </div>
+                                </div>
+                               
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="checkbox" color="warning" class="form-check-input" formControlName="martes" [(ngModel)]="martesOK">
+                              <span class="form-check-sign">                    
+                              </span><strong> Martes </strong></label>
+                              <div class="hora" *ngIf="martesOK">
+                                <div class="row">
+                                    <div class="col-6">
+                                      <div class="form-check">
+                                        <label class="form-check-label">
+                                          <input type="checkbox" class="form-check-input " id="ma8" (change)="checkValue($event)">
+                                          <span class="form-check-sign">                    
+                                          </span> 8:00 a 13:30 </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-check">
+                                          <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input " id="ma13" (change)="checkValue($event)">
+                                            <span class="form-check-sign">                    
+                                            </span> 13:30 a 19:00 </label>
+                                            
+                                          </div>
+                                      </div>
+                                </div>
+                               
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="checkbox" color="warning" class="form-check-input" formControlName="miercoles" [(ngModel)]="miercolesOK">
+                              <span class="form-check-sign">                    
+                              </span><strong> Miercoles</strong> </label>
+                              <div class="hora" *ngIf="miercolesOK">
+                                <div class="row">
+                                    <div class="col-6">
+                                      <div class="form-check">
+                                        <label class="form-check-label">
+                                          <input type="checkbox" class="form-check-input " id="mi8" (change)="checkValue($event)">
+                                          <span class="form-check-sign">                    
+                                          </span> 8:00 a 13:30 </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-check">
+                                          <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input " id="mi13" (change)="checkValue($event)">
+                                            <span class="form-check-sign">                    
+                                            </span> 13:30 a 19:00 </label>
+                                            
+                                          </div>
+                                      </div>
+                                </div>
+                               
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="checkbox" color="warning" class="form-check-input" formControlName="jueves"  [(ngModel)]="juevesOK">
+                              <span class="form-check-sign">                    
+                              </span><strong> Jueves </strong></label>
+                              <div class="hora" *ngIf="juevesOK">
+                                <div class="row">
+                                    <div class="col-6">
+                                      <div class="form-check">
+                                        <label class="form-check-label">
+                                          <input type="checkbox" class="form-check-input " id="ju8" (change)="checkValue($event)">
+                                          <span class="form-check-sign">                    
+                                          </span> 8:00 a 13:30 </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-check">
+                                          <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input " id="ju13" (change)="checkValue($event)">
+                                            <span class="form-check-sign">                    
+                                            </span> 13:30 a 19:00 </label>
+                                            
+                                          </div>
+                                      </div>
+                                </div>
+                               
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="checkbox" color="warning" class="form-check-input" formControlName="viernes" [(ngModel)]="viernesOK">
+                              <span class="form-check-sign">                    
+                              </span><strong> Viernes</strong> </label>
+                              <div class="hora" *ngIf="viernesOK">
+                                <div class="row">
+                                    <div class="col-6">
+                                      <div class="form-check">
+                                        <label class="form-check-label">
+                                          <input type="checkbox" class="form-check-input " id="vi8" (change)="checkValue($event)">
+                                          <span class="form-check-sign">                    
+                                          </span> 8:00 a 13:30 </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-check">
+                                          <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input " id="vi13" (change)="checkValue($event)">
+                                            <span class="form-check-sign">                    
+                                            </span> 13:30 a 19:00 </label>
+                                            
+                                          </div>
+                                      </div>
+                                </div>
+                               
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="checkbox" color="warning" class="form-check-input" formControlName="sabado" [(ngModel)]="sabadoOK">
+                              <span class="form-check-sign">                    
+                              </span><strong> Sábado</strong> </label>
+                              <div class="hora" *ngIf="sabadoOK">
+                                <div class="row">
+                                    <div class="col-6">
+                                      <div class="form-check">
+                                        <label class="form-check-label">
+                                          <input type="checkbox" class="form-check-input " id="sa8" (change)="checkValue($event)">
+                                          <span class="form-check-sign">                    
+                                          </span> 8:00 a 14:00 </label>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                  <div class="text-center">
+                    <button type="button" class="btn btn-primary my-4" type="submit" [disabled]="!form.valid" (click)="OnSubmitRegister()">Crear Usuario</button>
+                  </div>
+                </form>
+                <form [formGroup]="especialidadForm" (ngSubmit)="altaEspecialidades()" novalidate>
+                    <label>Alta de Especialidad</label>
+                    <!-- Form elements goes here -->
+                    <div class="form-group" [ngClass]="{'focused':focus11===true}">
+                        <div class="input-group input-group-alternative mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                            </div>
+                            <input class="form-control" formControlName="idEspecialidad" placeholder="Id Especialidad" type="text" (focus)="focus11=true" (blur)="focus11=false">
+                        </div>
+                    </div>
+                        <div class="form-group" [ngClass]="{'focused':focus12===true}">
+                        <div class="input-group input-group-alternative mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                            </div>
+                            <input class="form-control" formControlName="nombre" placeholder="Nombre Especialidad" type="text" (focus)="focus12=true" (blur)="focus12=false">
+                        </div>
+                        </div>
+                        <div class="text-center">
+                    <input class="btn btn-primary my-4" [disabled]="!especialidadForm.valid" type="submit" value="Crear Especialidad">
+                        </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
