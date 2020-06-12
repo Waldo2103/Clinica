@@ -217,7 +217,7 @@ OnSubmitRegister(){
         localStorage.setItem("email", this.form.get('mail').value);
         //AGREGO EL CLIENTE A LA BASE
         this.RegistrarProfesional()
-      this.router.navigate(['/Clinica/login']);
+      this.router.navigate(['/#/login']);
     }).catch(error => {
       //(<HTMLButtonElement>document.getElementById('btnModal')).click();
       if (error.code === 'auth/email-already-in-use') {
